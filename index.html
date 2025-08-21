@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Amor 💖</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+  body {
+    background: url('54ba33f9-297c-4203-b5cc-bdba776bd13f.jpg') no-repeat center center/cover;
+    position: relative;
+  }
+  .position-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  }
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: floatUp 5s linear infinite;
+  }
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: 10px; top: 0; }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="position-text">
+  Deliane & Rúben<br>
+  💖 Nosso Amor Infinito 💖
+</div>
+
+<!-- Música automática -->
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button id="botao-som" style="position:fixed;top:20px;right:20px;padding:10px 20px;font-size:16px;">
+  Ligar Música 🎵
+</button>
+
+<script>
+  const botao = document.getElementById('botao-som');
+  const musica = document.getElementById('musica');
+
+  botao.addEventListener('click', () => {
+    musica.play();
+    botao.style.display = 'none'; // Oculta o botão após tocar
+  });
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = 3 + Math.random() * 5 + 's';
+    heart.style.width = 10 + Math.random() * 20 + 'px';
+    heart.style.height = heart.style.width;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
